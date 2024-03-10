@@ -30,3 +30,17 @@ def delete(id):
     todos.delete_one({"_id": ObjectId(id)})
     return redirect(url_for('index'))
 
+
+# edit button
+@app.post("/<id>/update/")
+def update(id):
+    if request.method == "POST":
+        new_content = request.form["content"]
+        new_degree = request.form["degree"]
+        todos.update_one(
+            {"_id": ObjectId(id)},
+            {"$set": {"content": new_content, "degree": new_degree}},
+        )
+        return redirect(url_for("index"))
+    return render_template("index.html", todos=todos.find())
+

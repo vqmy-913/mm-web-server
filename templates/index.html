@@ -38,6 +38,27 @@
                 <input  type="submit" value="Delete To-do"
                         onclick="return confirm('Are you sure you want to delete this entry?')">
             </form>
+            <form method="POST" action="{{ url_for('update', id=todo['_id']) }}">
+                <details>
+                    <summary>Update entry</summary>
+                    <div class="content">
+                        <p>
+                            <input type="text" name="content"
+                                placeholder="Update Content"></input>
+                        </p>
+                        <p>
+                            <input id="degree-0" name="degree" required type="radio" value="Important">
+                            <label for="degree-0">Important</label>
+                        </p>
+                        <p>
+                            <input id="degree-1" name="degree" required type="radio" value="Unimportant">
+                            <label for="degree-1">Unimportant</label>
+                        </p>
+                        <input  type="submit" value="Update To-do"
+                                onclick="return confirm('Update this entry?')">
+                    </div>
+                  </details>
+            </form>
         </div>
     {% endfor %}
 
