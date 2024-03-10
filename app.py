@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, url_for, redirect
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 
+# change to another port (8000) with: flask run --port 8000
 app = Flask(__name__)
 
 client = MongoClient('localhost', 27017)
