@@ -12,7 +12,7 @@
     </style>
 </head>
 <body>
-    <h1>FlaskTODO</h1>
+    <h1>To-Do List by FLASK</h1>
     <hr>
     <div class="content">
     <form method="post">
@@ -37,6 +37,17 @@
         </p>
         <button type="submit">Submit</button>
     </form>
+    <hr>
+    {% for todo in todos %}
+        <div class="todo">
+            <p>{{ todo['content'] }} <i>({{ todo['degree']}})</i></p>
+            <form method="POST" action="{{ url_for('delete', id=todo['_id']) }}">
+                <input  type="submit" value="Delete To-do"
+                        onclick="return confirm('Are you sure you want to delete this entry?')">
+            </form>
+        </div>
+    {% endfor %}
+
     </div>
 </body>
 </html>
